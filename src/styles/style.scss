@@ -1,0 +1,48 @@
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: lightgray;
+    font-family: 'Lobster', cursive;
+    letter-spacing: 2.5px;
+}
+#root{
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    text-align: center;
+}
+input{
+    padding: 9px;
+    background-color: white;
+    margin: 5px;
+    border-radius: 10px;
+}
+button{
+    padding: 10px;
+    background-color: white;
+    margin: 5px;
+    border-radius: 10px;
+    font-family: 'Lobster', cursive;
+}
+.todo{
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+    padding: 5px;
+}
+li{
+    list-style-type: none;
+}
+input[type="checkbox"]{
+    transform:scale(2);
+
+}
+.todo-aside{
+    padding: 8px;
+}
