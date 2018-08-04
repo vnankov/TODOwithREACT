@@ -1,25 +1,32 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import TodoList from './components/todoList';
-import Input from './components/input';
-import Todo from './components/todo';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import TodoApp from './components/todoApp'
+
+const store = createStore(function todosReducer(state = { todos: [], filter: "" }, action) {
+  switch(action.type) {
+    case 'CREATE_TODO':
+      return Object.assign({}, state, {
+        todos: [...state.todos, { id: Math.random(), name: action.todo.name, isCompleted: false }]
+      });
+
+    case 'DELETE_TODO':
+      return Object.assign({}, state, {
+        todos: state.todos.filter(todo => todo.id !== action.id)
+      });
+    default:
+      return state;
+  }
+});
 
 class App extends React.Component {
 
   render() {
-    const { todos } = this.props;
-
     return (
-      <div>
-        <Input />
-          <TodoList>
-                  <Todo name={name}/>
-                  <Todo name={name}/>
-                  <Todo name={name}/>
-                  <Todo name={name}/>
-
-          </TodoList>
-        </div>
+      <Provider store={store}>
+        <TodoApp />
+      </Provider>
     );
   }
 };
