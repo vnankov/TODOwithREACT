@@ -13,7 +13,9 @@ class Input extends React.Component{
 
     addTodo(ev){
         ev.preventDefault();
-        this.props.createTodo(this.state.todoName)
+        if(this.state.todoName !== ''){
+            this.props.createTodo(this.state.todoName)
+        }
         this.setState({ todoName : '' })
     }
 
